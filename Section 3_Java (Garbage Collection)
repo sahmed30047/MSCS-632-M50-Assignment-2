@@ -1,0 +1,18 @@
+public class JavaMemoryExample {
+    public static void main(String[] args) {
+        String s1 = new String("Hello"); // Allocates on the heap
+        String s2 = s1; // Just a reference copy
+
+        s1 = null; // Eligible for garbage collection if no other references exist
+        System.out.println("s2 is still: " + s2);
+
+        // Creating objects in a loop to see garbage collection
+        for(int i = 0; i < 100000; i++){
+            String temp = new String("Temp " + i);
+        }
+
+        // Request GC (not guaranteed to run immediately)
+        System.gc();
+        System.out.println("Requested garbage collection");
+    }
+}
