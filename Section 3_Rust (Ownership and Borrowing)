@@ -1,0 +1,32 @@
+fn main() {
+    // Ownership with a String
+    let s1 = String::from("Hello");
+    let s2 = s1; // Moves ownership from s1 to s2
+
+    // println!("{}", s1); 
+    // Error! s1 is invalid after move. Uncommenting this line will not compile.
+
+    let s3 = s2.clone(); // Cloning explicitly
+    println!("s2: {}, s3: {}", s2, s3);
+
+    // Allocating and passing references
+    let mut my_vector = Vec::new();
+    my_vector.push(10);
+    my_vector.push(20);
+
+    // Borrowing references immutably
+    print_vector(&my_vector);
+    
+    // Borrowing references mutably
+    mutate_vector(&mut my_vector);
+    print_vector(&my_vector);
+}
+
+fn print_vector(v: &Vec<i32>) {
+    println!("Current vector: {:?}", v);
+}
+
+fn mutate_vector(v: &mut Vec<i32>) {
+    v.push(30);
+    println!("Vector mutated");
+}
