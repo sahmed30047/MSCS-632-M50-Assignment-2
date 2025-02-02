@@ -1,0 +1,20 @@
+#include <iostream>
+#include <string>
+
+void scopeExample() {
+    int x = 10;  // x is an int
+    {
+        // new scope (block)
+        int x = 20;  // shadows the outer x
+        std::cout << "Inner block x: " << x << std::endl;
+    }
+    std::cout << "Outer block x: " << x << std::endl;
+
+    // Attempting to assign a string to an int variable will cause a compile-time error
+    // x = "some string"; // Uncommenting this line would cause a type error
+}
+
+int main() {
+    scopeExample();
+    return 0;
+}
