@@ -1,0 +1,13 @@
+def outer_function():
+    x = 10  # local variable in outer_function
+    
+    def inner_function():
+        nonlocal x
+        x = "Now I'm a string!"  # Python allows changing the type of 'x'
+        print("Inner x:", x)
+    
+    print("Outer x (before):", x)
+    inner_function()
+    print("Outer x (after):", x)
+
+outer_function()
