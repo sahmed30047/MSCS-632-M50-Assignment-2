@@ -1,0 +1,20 @@
+function outerFunction() {
+    let x = 10; // local to outerFunction
+
+    function innerFunction() {
+        x = "Changed to a string!";
+        console.log("Inner x:", x);
+    }
+
+    console.log("Outer x (before):", x);
+    innerFunction();
+    console.log("Outer x (after):", x);
+
+    return function anotherInner() {
+        // This closure can still access 'x'
+        console.log("Value of x in closure:", x);
+    };
+}
+
+const closure = outerFunction();
+closure(); // Observe the value of x in the closure
